@@ -1,0 +1,11 @@
+.header {
+    @apply container flex flex-row items-center justify-between py-3 border-b border-gray-200;
+    @apply md:py-5;
+    @apply lg:px-5;
+    @apply xl:px-0;
+}
+
+.logo {
+    @apply text-xl font-medium;
+    @apply md:text-3xl;
+}
