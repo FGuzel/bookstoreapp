@@ -1,9 +1,20 @@
+'use client';
 import Image from "next/image";
 import styles from './styles.module.css';
+import { useEffect, useState } from "react";
 
 async function getBooksDetails(id: number) {
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${id}`);
     return response.json();
+}
+
+function TableRow({ label, value }: { label: string; value: string | number }) {
+    return value && (
+        <tr>
+            <td>{label}</td>
+            <td>{value}</td>
+        </tr>
+    );
 }
 
 interface PageProps<T = any> {
@@ -11,8 +22,21 @@ interface PageProps<T = any> {
     searchParams: URLSearchParams;
 }
 
-export default async function Page({ params }: PageProps<{ id: number }>) {
-    const bookDetail = await getBooksDetails(params.id);
+export default function BookDetail({ params }: PageProps<{ id: number }>) {
+    const [bookDetail, setBookDetail] = useState<any>(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            const fetchedBookDetail = await getBooksDetails(params.id);
+            setBookDetail(fetchedBookDetail);
+        }
+        fetchData();
+    }, [params.id]);
+
+    if (!bookDetail) {
+        return null;
+    }
+
     const {
         title,
         authors,
@@ -50,7 +74,7 @@ export default async function Page({ params }: PageProps<{ id: number }>) {
 
                 <div className={styles.bookDetailInfo}>
                     <div className={styles.bookDetailSubTitle}>
-                        <span>{authors[0]} | {categories}</span>
+                        <span>{authors?.[0]} {categories?.[0] && `| ${categories[0]}`}</span>
                     </div>
 
                     <div className={styles.bookDetailTitle}>
@@ -61,19 +85,23 @@ export default async function Page({ params }: PageProps<{ id: number }>) {
                         <span><b>SKU:</b> {bookDetail.etag}</span>
                     </div>
 
-                    <div
-                        className={styles.bookDetailDescription}
-                        dangerouslySetInnerHTML={{
-                            __html: description
-                        }}
-                    />
+                    {description &&
+                        <div
+                            className={styles.bookDetailDescription}
+                            dangerouslySetInnerHTML={{
+                                __html: description
+                            }}
+                        />
+                    }
 
                     {saleability === 'FOR_SALE' ? (
                         <div className={styles.bookDetailAddToBasket}>
                             <button className={styles.bookDetailAddToBasketText}>Add to Bag</button>
                             <div className={styles.bookDetailAddToBasketPrice}>
-                                <span className={styles.bookDetailAddToBasketPriceSale}>{retailPrice && retailPrice.amount}</span>
-                                <span className={styles.bookDetailAddToBasketPriceRetail}>{listPrice && listPrice.amount}</span>
+                                <span className={styles.bookDetailAddToBasketPriceSale}>{retailPrice?.amount && `$${retailPrice.amount}`}</span>
+                                {retailPrice?.amount !== listPrice?.amount &&
+                                    <span className={styles.bookDetailAddToBasketPriceRetail}>{listPrice?.amount && `$${listPrice.amount}`}</span>
+                                }
                             </div>
                         </div>
                     ) : (
@@ -96,63 +124,24 @@ export default async function Page({ params }: PageProps<{ id: number }>) {
                 <div className={styles.bookDetailTabWrapper}>
                     <span className={styles.bookDetailTabItemLink}>Information</span>
                 </div>
-
                 <div className={styles.bookDetailTableContent}>
                     <table className={styles.bookDetailTable}>
                         <tbody>
-                            <tr>
-                                <td>Language</td>
-                                <td>{language}</td>
-                            </tr>
-                            <tr>
-                                <td>Book Name</td>
-                                <td>{title}</td>
-                            </tr>
-                            <tr>
-                                <td>Author</td>
-                                <td>{authors[0]}</td>
-                            </tr>
-                            <tr>
-                                <td>Publisher</td>
-                                <td>{publisher}</td>
-                            </tr>
-                            <tr>
-                                <td>Published Date</td>
-                                <td>{publishedDate}</td>
-                            </tr>
-                            <tr>
-                                <td>PageCount</td>
-                                <td>{pageCount}</td>
-                            </tr>
+                            <TableRow label="Language" value={language} />
+                            <TableRow label="Book Name" value={title} />
+                            <TableRow label="Author" value={authors?.[0] ?? 'None'} />
+                            <TableRow label="Publisher" value={publisher} />
+                            <TableRow label="Published Date" value={publishedDate} />
+                            <TableRow label="PageCount" value={pageCount} />
                         </tbody>
                     </table>
-
                     <table className={styles.bookDetailTable}>
                         <tbody>
-                            <tr>
-                                <td>Printed Page Count</td>
-                                <td>{printedPageCount}</td>
-                            </tr>
-                            <tr>
-                                <td>Dimensions</td>
-                                <td>Height: {dimensions.height}, Width: {dimensions.width}</td>
-                            </tr>
-                            <tr>
-                                <td>Categories</td>
-                                <td>{categories}</td>
-                            </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td>{country}</td>
-                            </tr>
-                            <tr>
-                                <td>Saleability</td>
-                                <td>{saleability}</td>
-                            </tr>
-                            <tr>
-                                <td>Is E-book?</td>
-                                <td>{isEbook}</td>
-                            </tr>
+                            <TableRow label="Printed Page Count" value={printedPageCount} />
+                            <TableRow label="Categories" value={categories?.[0] ?? 'None'} />
+                            <TableRow label="Country" value={country} />
+                            <TableRow label="Saleability" value={saleability === 'NOT_FOR_SALE' ? 'No' : 'Yes'} />
+                            <TableRow label="Is E-book?" value="Yes" />
                         </tbody>
                     </table>
                 </div>
