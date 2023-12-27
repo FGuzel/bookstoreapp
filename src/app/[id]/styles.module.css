@@ -1,0 +1,101 @@
+.bookDetailWrapper {
+    @apply w-full;
+}
+
+.bookDetailWrapperTop {
+    @apply flex flex-col items-start justify-start w-full;
+    @apply md:flex-row;
+}
+
+.bookDetailWrapperBottom {
+    @apply w-full;
+}
+
+.bookDetailImage {
+    @apply w-full relative;
+    @apply md:max-w-[35%];
+}
+
+.bookDetailInfo {
+    @apply pt-2 w-full;
+    @apply md:px-5 md:pt-0;
+    @apply lg:px-16;
+    @apply xl:max-w-[63%] xl:pt-10 xl:pb-10;
+}
+
+.bookDetailSubTitle {
+    @apply text-sm uppercase tracking-[.05em] mb-3;
+    @apply lg:text-lg;
+}
+
+.bookDetailTitle {
+    @apply mb-3 text-2xl leading-none font-semibold;
+    @apply lg:text-5xl lg:font-light;
+}
+
+.bookDetailRating {
+    @apply text-xs mb-5;
+    @apply lg:text-sm lg:mb-10;
+}
+
+.bookDetailDescription {
+    @apply text-base font-extralight mb-6;
+    @apply lg:text-lg lg:mb-12;
+}
+
+.bookDetailAddToBasket {
+    @apply flex flex-row items-center justify-center max-w-fit bg-[#494A48] py-4 px-5 gap-x-16 w-full;
+    @apply lg:px-10 lg:w-auto;
+}
+
+.bookDetailAddToBasket, .bookDetailAddToBasketText {
+    @apply text-white text-sm uppercase leading-none font-extralight tracking-[.05em];
+    @apply lg:text-lg;
+}
+
+.bookDetailAddToBasketText {
+    @apply whitespace-nowrap;
+}
+
+.bookDetailAddToBasketPrice {
+    @apply flex flex-row items-center justify-center gap-x-2;
+}
+
+.bookDetailAddToBasketPriceRetail {
+    @apply line-through;
+}
+
+.bookDetailDiscount {
+    @apply text-xs tracking-[.05em] mt-2.5 capitalize mb-6;
+    @apply lg:text-sm;
+}
+
+.bookDetailTabWrapper {
+    @apply w-full flex flex-col-reverse items-center justify-between;
+    @apply md:flex-row md:border-b;
+}
+
+.bookDetailTabItemLink {
+    @apply inline-block py-2 border-b border-t border-gray-200 text-xl font-medium w-full text-center;
+    @apply md:text-2xl md:border-none md:border-transparent md:text-left md:w-auto;
+}
+
+.bookDetailTable {
+    @apply w-full table-auto mt-4;
+    @apply md:mt-0;
+}
+
+.bookDetailTable tr {
+    @apply my-1 flex flex-row items-start justify-start gap-x-1;
+    @apply md:my-4 md:items-center md:gap-x-0;
+}
+
+.bookDetailTable tr td {
+    @apply first:font-medium first:after:content-[':'];
+    @apply first:lg:w-64 first:lg:after:content-none;
+}
+
+.bookDetailTableContent {
+    @apply flex flex-col items-start justify-start gap-x-5;
+    @apply md:flex-row;
+}
