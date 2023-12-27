@@ -17,11 +17,18 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--background-end-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      rgb(var(--foreground-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--foreground-rgb));
+
+  @apply max-w-layout mx-auto;
+}
+
+main {
+  @apply container mx-auto my-5;
+  @apply md:my-10;
 }

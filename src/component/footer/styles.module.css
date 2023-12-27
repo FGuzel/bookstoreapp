@@ -1,0 +1,7 @@
+.footer {
+    @apply bg-gray-200;
+}
+
+.footerWrapper {
+    @apply container py-5 text-center text-sm;
+}
