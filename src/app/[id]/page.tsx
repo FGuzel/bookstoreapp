@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from './styles.module.css';
 import { useEffect, useState } from "react";
+import BookPreview from "@/component/book-preview";
 
 async function getBooksDetails(id: number) {
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${id}`);
@@ -123,6 +124,7 @@ export default function BookDetail({ params }: PageProps<{ id: number }>) {
             <div className={styles.bookDetailWrapperBottom}>
                 <div className={styles.bookDetailTabWrapper}>
                     <span className={styles.bookDetailTabItemLink}>Information</span>
+                    <BookPreview title={title} link={readLink} />
                 </div>
                 <div className={styles.bookDetailTableContent}>
                     <table className={styles.bookDetailTable}>

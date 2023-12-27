@@ -1,0 +1,14 @@
+.bookDetailPreviewButton {
+    @apply relative inline-flex items-center justify-center w-full p-0.5 mb-10 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-lg bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200;
+    @apply md:w-auto md:mb-2;
+}
+
+.bookDetailPreviewButtonSpan {
+    @apply relative px-10 py-2 transition-all ease-in duration-75 bg-white rounded-md w-full;
+    @apply md:w-auto;
+}
+
+.bookDetailPreviewIframe {
+    @apply w-full h-full min-h-64;
+    @apply md:w-[600px] md:h-[400px];
+}
