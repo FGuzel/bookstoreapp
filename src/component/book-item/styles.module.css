@@ -1,0 +1,50 @@
+.bookitem {
+    @apply flex flex-col items-start justify-start max-w-[47%] overflow-hidden;
+    @apply xs:max-w-[48%];
+    @apply md:max-w-[30.5%];
+    @apply lg:max-w-[22%];
+    @apply xl:max-w-[21.5%];
+}
+
+.bookitemImage {
+    @apply relative;
+}
+
+.bookItemInfo {
+    @apply w-full flex flex-col items-start justify-start;
+}
+
+.cardBadge {
+    @apply absolute top-3 left-3 z-10 p-1 px-2 text-[10px] uppercase tracking-[.05em] leading-none bg-[#494A48] text-white;
+    @apply md:text-sm;
+}
+
+.cardLineOne {
+    @apply flex flex-col items-start justify-between w-full mt-2 mb-0.5;
+    @apply md:mb-2.5 md:mt-5;
+}
+
+.bookName {
+    @apply text-base leading-none font-light;
+    @apply md:text-xl;
+}
+
+.bookPrice {
+    @apply flex flex-row items-center gap-x-2 mt-2;
+    @apply md:mt-0;
+}
+
+.bookPriceSale {
+    @apply text-sm tracking-[.05em] leading-none font-semibold;
+    @apply md:text-lg;
+}
+
+.bookPriceRetail {
+    @apply opacity-[.5] text-sm font-extralight tracking-[.05em] leading-none line-through;
+    @apply md:text-lg;
+}
+
+.bookAuthor {
+    @apply text-xs tracking-[.05em] uppercase font-extralight leading-5;
+    @apply md:text-sm;
+}

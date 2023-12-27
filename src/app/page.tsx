@@ -1,4 +1,5 @@
 'use client';
+import BookItem from '@/component/book-item';
 import React, { useEffect, useState } from 'react';
 
 type BookType = {
@@ -55,8 +56,8 @@ const Home = () => {
 
   return (
     <div>
-      {books.map((book, bookIndex) => (
-        <div key={bookIndex}>{book.id}</div>
+      {books.map((book) => (
+        <BookItem key={book.id} {...book} />
       ))}
     </div>
   );
