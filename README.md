@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+To start the development server, run the following command:
 
 ```bash
 npm run dev
@@ -14,23 +14,22 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, open http://localhost:3000 in your browser to view the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Overview
+Before starting the project, I created a bookshelf in my Google Books account with more than 10 books. Although I'm not a seller, I simulated being one to filter the books I wanted to display on the website.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You can view my bookshelf [here](https://books.google.com/books?uid=107913319159418324569&as_coll=1001).
 
-## Learn More
+For Google Books API documentation, refer to [this link](https://developers.google.com/books/docs/v1/using?hl=en).
 
-To learn more about Next.js, take a look at the following resources:
+## Features Included
+- Filtered books are listed on the homepage, with a maximum of 20 books displayed (similar to a product list page of an e-commerce site).
+- Redirection to a detail page is enabled for each book item, showing specific book details based on the URL-specified ID.
+- The detail page presents general and detailed book information. Additionally, an embedded iframe in a modal allows users to view the first few pages of books in PDF format.
+- Completed the search functionality enabling users to search for book names, categories, or authors within the Google Books database. The search displays a maximum of 3 results within a modal, limited to a maximum of 3 displayed items. Clicking on a search result directs the user to the book detail page, regardless of library registration.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Status
+The project is still in its draft stage. Despite the ease of coding the design, I lack design skills. I apologize in advance for any parts of the project that may be visually challenging as it was developed without a designer.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Note: Tailwind CSS is used as the UI framework for the project.
