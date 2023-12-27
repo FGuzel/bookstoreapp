@@ -1,26 +1,7 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 import Image from "next/image";
-
-export interface BookType {
-    id: number;
-    volumeInfo: {
-        title: string;
-        authors: string[];
-        categories: string[];
-        imageLinks?: {
-            thumbnail: string;
-        };
-    };
-    saleInfo: {
-        listPrice?: {
-            amount: number;
-        };
-        retailPrice?: {
-            amount: number;
-        };
-    };
-}
+import { BookType } from "../types/allTypes";
 
 function BookItem(props: BookType) {
     const { id, volumeInfo, saleInfo } = props;

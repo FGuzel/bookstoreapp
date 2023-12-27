@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { Modal } from "@/component/modal";
 import styles from './styles.module.css';
-
-type BookPreviewProps = {
-    title: string;
-    link: string;
-}
+import { BookPreviewProps } from "../types/allTypes";
 
 const BookPreview = ({ title, link }: BookPreviewProps) => {
     const [modalOpen, setModalOpen] = useState(false);

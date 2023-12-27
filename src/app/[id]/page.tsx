@@ -1,6 +1,7 @@
 'use client';
 import Image from "next/image";
 import styles from './styles.module.css';
+import { BookDetailPageProps } from "@/component/types/allTypes";
 import { useEffect, useState } from "react";
 import BookPreview from "@/component/book-preview";
 
@@ -18,12 +19,7 @@ function TableRow({ label, value }: { label: string; value: string | number }) {
     );
 }
 
-interface PageProps<T = any> {
-    params: T;
-    searchParams: URLSearchParams;
-}
-
-export default function BookDetail({ params }: PageProps<{ id: number }>) {
+export default function BookDetail({ params }: BookDetailPageProps<{ id: number }>) {
     const [bookDetail, setBookDetail] = useState<any>(null);
 
     useEffect(() => {

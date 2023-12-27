@@ -1,14 +1,7 @@
 import { useEffect } from 'react';
 import styles from './styles.module.css';
 import ReactPortal from '../react-portal';
-
-export interface ModalProps {
-    portalId: string;
-    children?: React.ReactNode;
-    open?: boolean;
-    setOpen?: (open: boolean) => void;
-    title?: React.ReactNode;
-}
+import { ModalProps } from '../types/allTypes';
 
 export const Modal = ({
     children,

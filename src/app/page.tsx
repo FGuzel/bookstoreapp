@@ -1,26 +1,7 @@
 'use client';
-import BookItem from '@/component/book-item';
 import React, { useEffect, useState } from 'react';
-
-type BookType = {
-  id: number;
-  volumeInfo: {
-      title: string;
-      authors: string[];
-      categories: string[];
-      imageLinks: {
-          thumbnail: string;
-      };
-  },
-  saleInfo: {
-      listPrice: {
-          amount: number;
-      },
-      retailPrice: {
-          amount: number;
-      }
-  }
-}
+import BookItem from '@/component/book-item';
+import { BookType } from '@/component/types/allTypes';
 
 async function fetchBooks() {
   const params = new URLSearchParams({

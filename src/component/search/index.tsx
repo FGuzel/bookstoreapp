@@ -1,26 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import styles from "./styles.module.css";
 import BookItem from '../book-item';
-
-export interface BookType {
-    id: number;
-    volumeInfo: {
-        title: string;
-        authors: string[];
-        categories: string[];
-        imageLinks?: {
-            thumbnail: string;
-        };
-    };
-    saleInfo: {
-        listPrice?: {
-            amount: number;
-        };
-        retailPrice?: {
-            amount: number;
-        };
-    };
-}
+import { BookType } from '../types/allTypes';
 
 export const Search = ({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void }) => {
     const [searchTerm, setSearchTerm] = useState('');
