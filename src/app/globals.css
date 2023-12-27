@@ -32,3 +32,9 @@ main {
   @apply container mx-auto my-5;
   @apply md:my-10;
 }
+
+main > div {
+  @apply flex flex-row flex-wrap items-start justify-center gap-x-5 gap-y-7;
+  @apply md:gap-x-7;
+  @apply xl:gap-x-14 xl:gap-y-12;
+}
